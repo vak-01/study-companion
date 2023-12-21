@@ -105,7 +105,7 @@ function LandingPage(){
                                         <svg class="flex-shrink-0 mt-1 w-6 h-6 text-blue-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="10" x="3" y="11" rx="2" /><circle cx="12" cy="5" r="2" /><path d="M12 7v4" /><line x1="8" x2="8" y1="16" y2="16" /><line x1="16" x2="16" y1="16" y2="16" /></svg>
                                         <span class="grow ms-6">
                                             <span class="block text-lg font-semibold hs-tab-active:text-blue-600 text-gray-800 dark:hs-tab-active:text-blue-500 dark:text-gray-200">Leverage AI for your Learning</span>
-                                            <span class="block mt-1 text-gray-800 dark:hs-tab-active:text-gray-200 dark:text-gray-200">Unleash the potential of Mistral AI to personalize your learning journey, making education smarter, more efficient, and tailored just for you.</span>
+                                            <span class="block mt-1 text-gray-800 dark:hs-tab-active:text-gray-200 dark:text-gray-200">Unleash the potential of AI to personalize your learning journey, making education smarter, more efficient, and tailored just for you.</span>
                                         </span>
                                     </span>
                                 </button>
