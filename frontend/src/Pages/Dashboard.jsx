@@ -13,7 +13,7 @@ function Dashboard () {
             <Routes>
                 <Route path='' element={<Goals />} />
 
-                <Route path='notes' element={<Folders />} />
+                <Route path='folders' element={<Folders />} />
 
                 <Route path='chat' element={<Chat />} />
             </Routes>
