@@ -14,7 +14,7 @@ function Notes() {
 
                     {/* Card */}
                     <div className="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
-                        <div className="h-44 flex flex-col justify-center items-center bg-blue-600 rounded-t-xl">
+                        <div className="h-40 flex flex-col justify-center items-center bg-blue-600 rounded-t-xl">
                             <svg
                                 className="w-28 h-28"
                                 width={56}
@@ -71,7 +71,6 @@ function Notes() {
                         </div>
                     </div>
                     {/* End Card */}
-
 
                 </div>
                 {/* End Grid */}
