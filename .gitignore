@@ -1,3 +1,4 @@
 env/
 .env
 backend/backend/script.py
+backend/backend/__pycache__
