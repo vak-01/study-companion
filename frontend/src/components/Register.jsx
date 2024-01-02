@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 function RegisterComponent(){
     return (
         <>
@@ -8,9 +10,9 @@ function RegisterComponent(){
             <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Sign up</h1>
             <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
               Already have an account?
-              <a class="text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+              <Link to="/login" class="text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
                 Sign in here
-              </a>
+              </Link>
             </p>
           </div>
 
@@ -74,17 +76,6 @@ function RegisterComponent(){
                   <p class=" text-xs text-red-600 mt-2" id="confirm-password-error">Password does not match the password</p>
                 </div>
                 {/* <!-- End Form Group --> */}
-
-                {/* <!-- Checkbox --> */}
-                <div class="flex items-center">
-                  <div class="flex">
-                    <input id="remember-me" name="remember-me" type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"/>
-                  </div>
-                  <div class="ms-3">
-                    <label for="remember-me" class="text-sm dark:text-white">I accept the <a class="text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">Terms and Conditions</a></label>
-                  </div>
-                </div>
-                {/* <!-- End Checkbox --> */}
 
                 <button type="submit" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Sign up</button>
               </div>
