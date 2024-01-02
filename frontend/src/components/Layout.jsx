@@ -10,6 +10,14 @@ function Layout(){
         setActiveLink(link);
     };
 
+    function getLinkText(activeLink) {
+        if (activeLink === "/home") return "Learning goals";
+        if (activeLink === "/home/folders") return "Folders";
+        if (activeLink === "/home/chat") return "Chat";
+        if (activeLink === "/home/folders/notes") return "Notes";
+        return "Default";
+      }
+
     const commonClasses = "flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-slate-600 dark:hover:bg-gray-900 dark:text-slate-400 dark:hover:text-slate-300 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600";
     const activeClass = "bg-gray-100 dark:bg-gray-900 dark:text-white";
     const inactiveClass = "";
@@ -86,13 +94,13 @@ function Layout(){
                         {/* <!-- Breadcrumb --> */}
                         <ol class="ms-3 flex items-center whitespace-nowrap" aria-label="Breadcrumb">
                             <li class="flex items-center text-sm text-gray-800 dark:text-gray-400">
-                                Application Layout
+                                Home
                                 <svg class="flex-shrink-0 mx-3 overflow-visible h-2.5 w-2.5 text-gray-400 dark:text-gray-600" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M5 1L10.6869 7.16086C10.8637 7.35239 10.8637 7.64761 10.6869 7.83914L5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                                 </svg>
                             </li>
                             <li class="text-sm font-semibold text-gray-800 truncate dark:text-gray-400" aria-current="page">
-                                My Learning goals
+                            {getLinkText(activeLink)}
                             </li>
                         </ol>
                         {/* <!-- End Breadcrumb --> */}
