@@ -6,7 +6,7 @@ function Notes() {
         <div className="notes-container">
             {/* Card Blog */}
             <div className="max-w-[85rem] ml-auto px-4 py-10 sm:px-6 lg:px-8 lg:py-8">
-                <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white mb-3 mt-0 pt-0">My Notes</h1>
+                <h1 className="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white mb-3 mt-0 pt-0">My Notes</h1>
 
                 {/* Grid */}
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
