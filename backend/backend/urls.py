@@ -18,12 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
 from . import views
-import goals
 
 urlpatterns = [
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
     path('register/', views.register, name='register'),
     path('logout/', views.logout, name='logout'),
     path('goals/', include('goals.urls')),
+    path('folders/', include('notesapp.urls')),
     path('admin/', admin.site.urls)
 ]

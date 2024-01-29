@@ -62,7 +62,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
 
-    'goals'
+    'goals',
+    'notesapp'
 ]
 
 REST_FRAMEWORK = {
