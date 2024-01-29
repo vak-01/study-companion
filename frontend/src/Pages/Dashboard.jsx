@@ -9,13 +9,17 @@ import Chat from '../components/Chat';
 import Notes from "../components/My Notes/Notes";
 
 function Dashboard () {
-    useEffect(() => {
-        import('preline')
-      }, []);
+      useEffect(() => {
+        // Load and initialize JavaScript file
+        HSStaticMethods.autoInit();
+        const script = document.createElement('script');
+        script.src = '../../node_modules/preline/preline.js';
+        document.body.appendChild(script);
     
-    const location = useLocation();
-    const uname = location.state?.username;
-    console.log(uname);
+        return () => {
+          document.body.removeChild(script);
+        };
+      }, []);
 
     return (
         <>
