@@ -1,17 +1,19 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import LandingPage from './Pages/LandingPage';
 import Dashboard from './Pages/Dashboard';
 import LoginComponent from './components/Login';
 import RegisterComponent from './components/Register';
 import PrivateRoute from './PrivateRoute.jsx';
+import "preline/preline";
 
 function App() {
 
   useEffect(() => {
-    import('preline')
-  }, [])
+    import('preline/plugin');
+  }, []);
 
   return (
     

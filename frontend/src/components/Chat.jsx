@@ -36,7 +36,7 @@ function Chat() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <g id="bgCarrier" strokeWidth="0">
-                  <rect x="-2.64" y="-2.64" width="29.28" height="29.28" rx="14.64" fill="#2563EB" strokewidth="0">
+                  <rect x="-2.64" y="-2.64" width="29.28" height="29.28" rx="14.64" fill="#2563EB" strokeWidth="0">
                   </rect>
                 </g>
                 <g id="tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
@@ -99,7 +99,7 @@ function Chat() {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <g id="bgCarrier" strokeWidth="0">
-                  <rect x="-2.64" y="-2.64" width="29.28" height="29.28" rx="14.64" fill="#2563EB" strokewidth="0">
+                  <rect x="-2.64" y="-2.64" width="29.28" height="29.28" rx="14.64" fill="#2563EB" strokeWidth="0">
                   </rect>
                 </g>
                 <g id="tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
