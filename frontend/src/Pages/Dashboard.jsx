@@ -25,11 +25,11 @@ function Dashboard () {
         <>
             <Layout />
             <Routes>
+                <Route path='/folders/:folderId/notes' element={<Notes />} />
+
+                <Route path='/folders' element={<Folders />} /> 
+
                 <Route path='' element={<Goals />} />
-
-                <Route path='folders/notes' element={<Notes />} />
-
-                <Route path='folders' element={<Folders />} />
 
                 <Route path='chat' element={<Chat />} />
 
