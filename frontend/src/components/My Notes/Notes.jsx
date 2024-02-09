@@ -1,7 +1,16 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
 import './Notes.css';
 
 function Notes() {
+        const { folderId } = useParams();
+
+    useEffect(() => {
+        
+    }, []);
+
     return (
         <div className="notes-container">
             {/* Card Blog */}
@@ -13,6 +22,7 @@ function Notes() {
 
 
                     {/* Card */}
+                    <Link to={`/folders/${folderId}/notes/1`}>
                     <div className="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
                         <div className="h-40 flex flex-col justify-center items-center bg-blue-600 rounded-t-xl">
                             <svg
@@ -70,6 +80,7 @@ function Notes() {
                             </a>
                         </div>
                     </div>
+                    </Link>
                     {/* End Card */}
 
                 </div>

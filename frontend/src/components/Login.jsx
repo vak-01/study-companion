@@ -41,7 +41,6 @@ function LoginComponent() {
             const data = await response.json();
             setToken(data.token);
             localStorage.setItem('cp-tkn', data.token);
-            console.log("success", data.token);
             setError(null); // clear error message on successful login
 
             navigate('/home', { state: { username }});
