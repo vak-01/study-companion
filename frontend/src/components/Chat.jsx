@@ -1,13 +1,169 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import  axios  from 'axios';
+import MarkDown from 'react-markdown';
+import remarkGfm from 'remark-gfm'
+import './Chat.css';
+
+function ChatBubble({ message, response }) {
+  return (
+    <>
+      <li className="py-2 sm:py-4">
+        <div className="max-w-4xl px-4 sm:px-6 lg:px-8 mx-auto">
+          <div className="max-w-2xl flex gap-x-2 sm:gap-x-4">
+            <span className="flex-shrink-0 inline-flex items-center justify-center h-[2.375rem] w-[2.375rem] rounded-full bg-gray-600">
+              <span className="text-sm font-medium text-white leading-none">
+                YOU
+              </span>
+            </span>
+            <div className="grow mt-2 space-y-3">
+              <p className="text-gray-800 dark:text-gray-200">
+                {message}
+              </p>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li className="max-w-4xl py-2 px-4 sm:px-6 lg:px-8 mx-auto flex gap-x-2 sm:gap-x-4">
+        <svg
+          className="flex-shrink-0 w-[2.375rem] h-[2.375rem] rounded-full text-white"
+          width={38}
+          height={38}
+          viewBox="-2.64 -2.64 29.28 29.28"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <g id="bgCarrier" strokeWidth="0">
+            <rect x="-2.64" y="-2.64" width="29.28" height="29.28" rx="14.64" fill="#2563EB" strokeWidth="0">
+            </rect>
+          </g>
+          <g id="tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+          <g id="iconCarrier"> <path d="M3 5V20.7929C3 21.2383 3.53857 21.4614 3.85355 21.1464L7.70711 17.2929C7.89464 17.1054 8.149 17 8.41421 17H19C20.1046 17 21 16.1046 21 15V5C21 3.89543 20.1046 3 19 3H5C3.89543 3 3 3.89543 3 5Z"
+            stroke="#dfdfeb" strokeWidth="1.8719999999999999" strokeLinecap="round" strokeLinejoin="round">
+          </path>
+            <path d="M15 12C14.2005 12.6224 13.1502 13 12 13C10.8498 13 9.79952 12.6224 9 12" stroke="#dfdfeb" strokeWidth="1.8719999999999999" strokeLinecap="round" strokeLinejoin="round"></path>
+            <path d="M9 8.01953V8" stroke="#dfdfeb" strokeWidth="1.8719999999999999" strokeLinecap="round" strokeLinejoin="round"></path>
+            <path d="M15 8.01953V8" stroke="#dfdfeb" strokeWidth="1.8719999999999999" strokeLinecap="round" strokeLinejoin="round">
+            </path>
+          </g>
+        </svg>
+        <div className="grow max-w-[90%] md:max-w-2xl w-full space-y-3">
+
+          {/* Card */}
+          {
+          response?
+          (
+          <div className="space-y-3">
+            <p className="text-md text-gray-800 dark:text-white">
+              <MarkDown remarkPlugins={[remarkGfm]}>{response}</MarkDown>
+            </p>
+          </div>
+          ):(
+          <div className="flex animate-pulse">
+            <div className="ms-4 mt-2 w-full">
+              <h3
+                className="h-4 bg-gray-200 rounded-full dark:bg-gray-700"
+                style={{ width: "40%" }}
+              />
+              <ul className="p-0 mt-5 space-y-3">
+                <li className="w-full h-4 bg-gray-200 rounded-full dark:bg-gray-700" />
+                <li className="w-full h-4 bg-gray-200 rounded-full dark:bg-gray-700" />
+                <li className="w-full h-4 bg-gray-200 rounded-full dark:bg-gray-700" />
+                <li className="w-full h-4 bg-gray-200 rounded-full dark:bg-gray-700" />
+              </ul>
+            </div>
+          </div>
+          )
+          }
+          
+          {/* End Card */}
+
+          {/* Button Group */}
+          <div>
+            <div className="sm:flex sm:justify-between">
+              <div>
+
+                <button
+                  type="button"
+                  className="py-2 px-3 inline-flex items-center gap-x-2 text-sm rounded-full border border-transparent text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                >
+                  Copy
+                </button>
+
+              </div>
+              <div className="mt-1 sm:mt-0">
+                <button
+                  type="button"
+                  className="py-2 px-3 inline-flex items-center gap-x-2 text-sm rounded-full border border-transparent text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                >
+                  <svg
+                    className="flex-shrink-0 h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={24}
+                    height={24}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
+                    <path d="M21 3v5h-5" />
+                  </svg>
+                  New answer
+                </button>
+              </div>
+            </div>
+          </div>
+          {/* End Button Group */}
+        </div>
+      </li>
+    </>
+  )
+}
 
 function Chat() {
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    let data = "";
+
+    setMessages((prevMessages) => [...prevMessages, { message: input, response: null }]);
+  
+    await axios.post('http://localhost:8000/chat/',
+      { "question": input },
+      { headers: { 'Authorization': `Token ${localStorage.getItem('cp-tkn')}` } }
+    )
+      .then(response => {
+        console.log(response.data.text);
+        data = response.data.text;
+      })
+      .catch(error => {
+        console.error('There was an error!', error);
+      });
+  
+    const exchange = { message: input, response: data };
+
+    setMessages((prevMessages) => {
+      const updatedMessages = [...prevMessages];
+      updatedMessages[prevMessages.length - 1] = exchange;
+      return updatedMessages;
+    });
+
+    console.log(messages);
+
+    setInput('');
+  };
+
   return (
     <>
       {/* Content */}
-      <div className="relative h-screen">
-        <div className="py-10 lg:py-14">
+      <div className="relative h-screen flex flex-col">
+        <div className="py-10 lg:py-14 flex-grow overflow-auto">
           {/* Title */}
           <div className="max-w-4xl px-4 sm:px-6 lg:px-8 mx-auto text-center">
             <h1 className="text-3xl font-bold text-gray-800 sm:text-4xl dark:text-white">
@@ -70,98 +226,13 @@ function Chat() {
             </li>
             {/* End Chat Bubble */}
 
-            {/* Chat Bubble */}
-            <li className="py-2 sm:py-4">
-              <div className="max-w-4xl px-4 sm:px-6 lg:px-8 mx-auto">
-                <div className="max-w-2xl flex gap-x-2 sm:gap-x-4">
-                  <span className="flex-shrink-0 inline-flex items-center justify-center h-[2.375rem] w-[2.375rem] rounded-full bg-gray-600">
-                    <span className="text-sm font-medium text-white leading-none">
-                      YOU
-                    </span>
-                  </span>
-                  <div className="grow mt-2 space-y-3">
-                    <p className="text-gray-800 dark:text-gray-200">
-                      what is database sharding?
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </li>
-            {/* End Chat Bubble */}
-
-            {/* Chat Bubble */}
-            <li className="max-w-4xl py-2 px-4 sm:px-6 lg:px-8 mx-auto flex gap-x-2 sm:gap-x-4">
-              <svg
-                className="flex-shrink-0 w-[2.375rem] h-[2.375rem] rounded-full text-white"
-                width={38}
-                height={38}
-                viewBox="-2.64 -2.64 29.28 29.28"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <g id="bgCarrier" strokeWidth="0">
-                  <rect x="-2.64" y="-2.64" width="29.28" height="29.28" rx="14.64" fill="#2563EB" strokeWidth="0">
-                  </rect>
-                </g>
-                <g id="tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                <g id="iconCarrier"> <path d="M3 5V20.7929C3 21.2383 3.53857 21.4614 3.85355 21.1464L7.70711 17.2929C7.89464 17.1054 8.149 17 8.41421 17H19C20.1046 17 21 16.1046 21 15V5C21 3.89543 20.1046 3 19 3H5C3.89543 3 3 3.89543 3 5Z"
-                  stroke="#dfdfeb" strokeWidth="1.8719999999999999" strokeLinecap="round" strokeLinejoin="round">
-                </path>
-                  <path d="M15 12C14.2005 12.6224 13.1502 13 12 13C10.8498 13 9.79952 12.6224 9 12" stroke="#dfdfeb" strokeWidth="1.8719999999999999" strokeLinecap="round" strokeLinejoin="round"></path>
-                  <path d="M9 8.01953V8" stroke="#dfdfeb" strokeWidth="1.8719999999999999" strokeLinecap="round" strokeLinejoin="round"></path>
-                  <path d="M15 8.01953V8" stroke="#dfdfeb" strokeWidth="1.8719999999999999" strokeLinecap="round" strokeLinejoin="round">
-                  </path>
-                </g>
-              </svg>
-              <div className="grow max-w-[90%] md:max-w-2xl w-full space-y-3">
-                {/* Card */}
-                <div className="space-y-3">
-                  <p className="text-sm text-gray-800 dark:text-white">
-                    Database sharding splits a single dataset into partitions or shards. Each shard contains unique rows of information that you can store separately across multiple computers, called nodes. All shards run on separate nodes but share the original database's schema or design.
-                  </p>
-                </div>
-                {/* End Card */}
-                {/* Button Group */}
-                <div>
-                  <div className="sm:flex sm:justify-between">
-                    <div>
-
-                      <button
-                        type="button"
-                        className="py-2 px-3 inline-flex items-center gap-x-2 text-sm rounded-full border border-transparent text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                      >
-                        Copy
-                      </button>
-
-                    </div>
-                    <div className="mt-1 sm:mt-0">
-                      <button
-                        type="button"
-                        className="py-2 px-3 inline-flex items-center gap-x-2 text-sm rounded-full border border-transparent text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                      >
-                        <svg
-                          className="flex-shrink-0 h-4 w-4"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width={24}
-                          height={24}
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
-                          <path d="M21 3v5h-5" />
-                        </svg>
-                        New answer
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                {/* End Button Group */}
-              </div>
-            </li>
-            {/* End Chat Bubble */}
+            {
+            messages.map((message, index) => {
+              return (
+                <ChatBubble key={index} message={message.message} response={message.response} />
+              )
+            })
+          }
 
           </ul>
           {/* THE CHAT ENDS HERE */}
@@ -170,7 +241,7 @@ function Chat() {
 
         {/* GIVEN BELOW IS THE SEARCH BOX */}
         <footer className="sticky bottom-0 z-10 bg-white border-t border-gray-200 pt-2 pb-3 sm:pt-4 sm:pb-6 dark:bg-slate-900 dark:border-gray-700">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="border-gray-200 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center mb-3">
               <button
                 type="button"
@@ -213,9 +284,10 @@ function Chat() {
             {/* Input */}
             <div className="relative">
               <textarea
-                className="p-4 pb-12 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+                className="p-4 pb-12 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 border-2"
                 placeholder="Ask me anything..."
-                defaultValue={""}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
               />
               {/* Toolbar */}
               <div className="absolute bottom-px inset-x-px p-2 rounded-b-md bg-white dark:bg-slate-900">
@@ -295,6 +367,7 @@ function Chat() {
                     {/* Send Button */}
                     <button
                       type="button"
+                      onClick={handleSubmit}
                       className="inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-lg text-white bg-blue-600 hover:bg-blue-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                     >
                       <svg
