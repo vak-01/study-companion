@@ -25,5 +25,6 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
     path('goals/', include('goals.urls')),
     path('folders/', include('notesapp.urls')),
+    path('chat/', include('chatapp.urls')),
     path('admin/', admin.site.urls)
 ]

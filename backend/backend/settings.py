@@ -63,7 +63,8 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'goals',
-    'notesapp'
+    'notesapp',
+    'chatapp'
 ]
 
 REST_FRAMEWORK = {
