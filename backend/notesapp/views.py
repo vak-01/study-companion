@@ -31,3 +31,15 @@ class FolderDetailView(generics.RetrieveAPIView):
     queryset = Folder.objects.all()
     serializer_class = FolderSerializer
     permission_classes = [IsAuthenticated]
+
+class NotesListView(generics.ListCreateAPIView):
+    serializer_class = NoteSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        # Retrieve notes associated with the authenticated user
+        return Note.objects.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        # Associate the note with the authenticated user
+        serializer.save(user=self.request.user)
