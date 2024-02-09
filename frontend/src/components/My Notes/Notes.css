@@ -3,3 +3,54 @@
       padding-left: 17rem; 
     }
   }
+  
+  .ql-container {
+    /* Styles for the editor container */
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    width: 30vw;
+    height: 25vh;
+    text-wrap: none;
+  }
+  
+  .ql-editor {
+    /* Styles for the editor */
+    font-size: 18px;
+    height: 45vh;
+    color: black;
+    overflow-y: scroll;
+    padding: 10px;
+    overflow-y: hidden;
+  }
+  
+  .ql-snow.ql-toolbar {
+    /* Styles for the toolbar */
+    background-color: rgb(140, 220, 115);
+    border-bottom: 1px solid #ccc;
+    /* display:none; */
+  }
+
+  #editor{
+    width: auto;
+    height: auto;
+  }
+
+.ql-snow.ql-toolbar button{
+    /* background-color: #3b2525; */
+    border: 1px solid #ab2a2a;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+.ql-snow.ql-toolbar button:hover{
+    border: 1px solid rgb(5, 7, 97);
+    color: #fff;
+}
+
+.ql-bubble.ql-toolbar{
+  display: flex;
+  flex-wrap: wrap;
+}
