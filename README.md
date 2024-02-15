@@ -5,6 +5,19 @@ This project is a web application, that is designed to
 - set learning goals
 - leverage AI assistance for learning.
 
+
+> ## The landing page
+> ![study copilot](https://github.com/vak-01/study-companion/assets/78302047/58a3ca51-5e99-4967-90b3-054cea909fe5)
+
+> ## The goals page
+> ![snip2](https://github.com/vak-01/study-companion/assets/78302047/e058971d-1aa2-4827-9cb5-1d7bdc1c2b33)
+
+> ## The chat interface (powered by Google Gemini API)
+> ![snip1](https://github.com/vak-01/study-companion/assets/78302047/3e18d6cc-407c-42e6-b04e-1dc3b879bbf1)
+
+
+
+
 ## How to run the project.
 1. Clone the repository 
    ```
@@ -81,3 +94,5 @@ This project is a web application, that is designed to
       - Preline UI
       - Heropatterns
         
+### NOTE:
+Few of the core features of app is still under construction.
